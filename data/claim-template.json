@@ -1,0 +1,148 @@
+{
+  "resourceType": "Claim",
+  "id": "utlegg-example",
+  "contained": [
+    {
+      "resourceType": "Organization",
+      "id": "hl7-norway",
+      "name": "HL7 Norge",
+      "address": [
+        {
+          "line": [
+            "c/o Line A Sæle",
+            "Steinsvikkroken 37"
+          ],
+          "postalCode": "5237",
+          "city": "Bergen"
+        }
+      ],
+      "identifier": [
+        {
+          "system": "urn:oid:2.16.578.1.12.4.1.4.101",
+          "value": "995 726 246"
+        }
+      ]
+    },
+    {
+      "resourceType": "Practitioner",
+      "id": "sender",
+      "name": [
+        {
+          "text": "Navn Navnesen"
+        }
+      ],
+      "address": [
+        {
+          "line": [
+            "Heiveien 17"
+          ],
+          "postalCode": "4863",
+          "city": "Nelaug"
+        }
+      ]
+    },
+    {
+      "resourceType": "Account",
+      "id": "account",
+      "identifier": [
+        {
+          "value": "1234 12 12345"
+        }
+      ],
+      "subject": {
+        "reference": "#sender"
+      }
+    }
+  ],
+  "status": "active",
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+        "code": "professional"
+      }
+    ]
+  },
+  "use": "claim",
+  "created": "2026-03-03",
+  "patient": {
+    "display": "ProsjektAktivitet"
+  },
+  "insurer": {
+    "reference": "#hl7-norway"
+  },
+  "provider": {
+    "reference": "#sender"
+  },
+  "priority": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+        "code": "normal"
+      }
+    ]
+  },
+  "supportingInfo": [
+    {
+      "sequence": 1,
+      "category": {
+        "text": "signed"
+      },
+      "timingDate": "2026-03-03",
+      "valueString": "Oslo"
+    }
+  ],
+  "item": [
+    {
+      "sequence": 1,
+      "productOrService": {
+        "text": "Mistral"
+      },
+      "net": {
+        "value": 20,
+        "currency": "EUR"
+      },
+      "extension": [
+        {
+          "url": "http://example.org/covered",
+          "valueMoney": {
+            "value": 20,
+            "currency": "EUR"
+          }
+        }
+      ]
+    },
+    {
+      "sequence": 2,
+      "productOrService": {
+        "text": "Claude"
+      },
+      "net": {
+        "value": 20,
+        "currency": "USD"
+      },
+      "extension": [
+        {
+          "url": "http://example.org/covered",
+          "valueMoney": {
+            "value": 20,
+            "currency": "USD"
+          }
+        }
+      ]
+    }
+  ],
+  "total": {
+    "value": 100,
+    "currency": "NOK",
+    "extension": [
+      {
+        "url": "http://example.org/covered",
+        "valueMoney": {
+          "value": 100,
+          "currency": "NOK"
+        }
+      }
+    ]
+  }
+}
